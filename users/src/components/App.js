@@ -12,11 +12,11 @@ export const initialState = [{
 
 function App() {
   return (
-    <div className="App">
+    <Styles.AppContainer>
       <UserCard />
-      <EditUser />
       <AddUser />
-    </div>
+    </Styles.AppContainer>
+
   )
 }
 

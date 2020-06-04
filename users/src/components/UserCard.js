@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { initialState } from './App'
+import EditUser from './EditUser'
 
-function UserCard() {
+function UserCard(props) {
 
     const [user, setUser] = useState(initialState)
     const [update, setUpdate] = useState(false)
@@ -37,6 +38,7 @@ function UserCard() {
                             <p>Bio: {user.bio}</p>
                             <p>id: {user.id}</p>
                             <button onClick={() => DeleteUser(user.id)}>Delete</button>
+                                <EditUser id={user.id}/>
                         </div>
                     )
                 })}

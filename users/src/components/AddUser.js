@@ -25,7 +25,10 @@ function AddUser() {
     e.preventDefault()
     axios
     .post(`http://localhost:8080/api/users/`, user)
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data)
+      window.location.reload()
+    })
     // .then(() => {
     //   setUser({
     //     name:'',
