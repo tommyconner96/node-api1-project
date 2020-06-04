@@ -1,11 +1,13 @@
 //imports
 const express = require("express")
 const db = require("./database.js")
+const cors = require("cors")
 //express
 const server = express()
 
 //installing middleware
 server.use(express.json())
+server.use(cors())
 
 //posts a new user
 server.post("/api/users", (req, res) => {
