@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { initialState } from './App'
-import UserCard from './UserCard'
+import styled from 'styled-components'
 
 
 function AddUser() {
@@ -39,33 +39,75 @@ function AddUser() {
 
 
   return (
-    <div className="add-user">
+    <StyledAdd>
       <form onSubmit={onSubmit}>
-        <legend>Add User</legend>
+        <legend><h2>Add User</h2></legend>
         <label>
-          Name:
-            <input
+          <h3>Name: </h3>
+            <StyledInput
             type='text'
             name='name'
             onChange={onChange}
             value={user.name}
           />
         </label>
+        <br />
+        <br />
         <label>
-          Bio:
-            <input
+          <h3>Bio: </h3>
+            <StyledInput
             type='text'
             name='bio'
             onChange={onChange}
             value={user.bio}
           />
         </label>
+        <br /><br />
         <div className="button-row">
-          <button type="submit">Add User</button>
+          <Button type="submit">Add User</Button>
         </div>
       </form>
-    </div>
+    </StyledAdd>
   )
 }
+
+const StyledAdd = styled.div`
+transition-duration: 0.4s;
+padding-top:1em;
+background-color:#9ABCA7;
+border: 1px solid black;
+border-radius:10px;
+width: 500px;
+height: auto;
+margin: 0 auto;
+margin-top: 2em;
+text-align: center;
+padding-bottom:1em;
+:hover {
+  font-size: 1.02em;
+  width: 503px;
+}
+`
+
+const StyledInput = styled.input`
+:focus {
+  background-color:lightgreen;
+  border: 3px solid #555;
+}
+`
+const Button = styled.button`
+margin-top:.25em;
+transition-duration: 0.4s;
+padding-left:1em;
+padding-right:1em;
+padding-top:.5em;
+padding-bottom:.5em;
+margin-bottom:.5em;
+border-radius: .5em;
+    :hover {
+    background-color: lightgreen;
+    color: black;
+  }
+`
 
 export default AddUser

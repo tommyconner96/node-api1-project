@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { initialState } from './App'
 import axios from 'axios'
+import styled from 'styled-components'
 
 
 function EditUser({id}) {
@@ -39,10 +39,10 @@ useState(() => {
     return (
         <div className="edit-user">
         <form onSubmit={onSubmit}>
-          <legend>Edit User</legend>
+          <legend><h2>Edit User</h2></legend>
           <label>
-            Name:
-              <input
+            <h3>Name:</h3>
+              <StyledInput
               type='text'
               name='name'
               onChange={onChange}
@@ -50,8 +50,8 @@ useState(() => {
             />
           </label>
           <label>
-            Bio:
-              <input
+            <h3>Bio:</h3>
+              <StyledInput
               type='text'
               name='bio'
               onChange={onChange}
@@ -59,16 +59,38 @@ useState(() => {
             />
           </label>
           <div className="button-row">
-            <button type="submit">Save</button>
+            <br />
+            <Button type="submit">Save</Button>
           </div>
         </form>
       </div>
       )} else return <div>
-          <button onClick={() => {
+          <Button onClick={() => {
             setEditing(true)
             setSubmit(true)
-            }} >Edit User</button>
+            }} >Edit User</Button>
       </div>
 }
+
+const Button = styled.button`
+transition-duration: 0.4s;
+padding-left:1em;
+padding-right:1em;
+padding-top:.5em;
+padding-bottom:.5em;
+margin-bottom:.5em;
+border-radius: .5em;
+    :hover {
+    background-color: green;
+    color: white;
+  }
+`
+const StyledInput = styled.input`
+:focus {
+  background-color:#9ABCA7;
+  color: black;
+  border: 3px solid #555;
+}
+`
   
   export default EditUser
