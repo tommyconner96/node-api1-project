@@ -10,8 +10,14 @@ function EditUser({id}) {
 
   const [editing, setEditing] = useState(false)
 
-useState(() => {
-  setEditing(false)
+
+useEffect(() => {
+  // axios
+  // .get(`http://localhost:8080/api/users`)
+  // .then(res => {
+  //     console.log(res.data)
+  //     setUser(res.data)
+  // })
   setSubmit(false)
 },[submit])
 
@@ -26,16 +32,17 @@ useState(() => {
 
   const onSubmit = (e) => {
     console.log(user)
-    setSubmit(true)
     e.preventDefault()
     axios
     .put(`http://localhost:8080/api/users/${id}`, user)
     .then(res => console.log(res.data))
+    setSubmit(true)
+    setEditing(false)
     window.location.reload()
   }
 
 
-  if(editing == true){ 
+  if(editing === true){ 
     return (
         <div className="edit-user">
         <form onSubmit={onSubmit}>
@@ -67,7 +74,6 @@ useState(() => {
       )} else return <div>
           <Button onClick={() => {
             setEditing(true)
-            setSubmit(true)
             }} >Edit User</Button>
       </div>
 }

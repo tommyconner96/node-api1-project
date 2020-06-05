@@ -9,6 +9,9 @@ function AddUser() {
   const [user, setUser] = useState(initialState)
   const [submit, setSubmit] = useState(false)
 
+  useEffect(() => {
+    // setSubmit(false)
+  },[submit])
 
   const onChange = (e) => {
     e.persist()
@@ -21,20 +24,15 @@ function AddUser() {
 
   const onSubmit = (e) => {
     console.log(user)
-    setSubmit(true)
     e.preventDefault()
     axios
     .post(`http://localhost:8080/api/users/`, user)
     .then(res => {
       console.log(res.data)
-      window.location.reload()
+      // window.location.reload()
     })
-    // .then(() => {
-    //   setUser({
-    //     name:'',
-    //     bio:'',
-    //   })
-    // })
+    setSubmit(true)
+    window.location.reload()
   }
 
 
